@@ -1,0 +1,1108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>租赁车辆 - 支付宝小程序原型</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f5f7fa;
+            color: #333;
+        }
+        .alipay-container {
+            max-width: 390px;
+            margin: 0 auto;
+            border: 1px solid #ddd;
+            background-color: #fff;
+            height: 844px;
+            overflow-y: auto;
+            position: relative;
+        }
+        .status-bar {
+            height: 44px;
+            background-color: #1677FF;
+            display: flex;
+            align-items: center;
+            padding: 0 16px;
+            color: white;
+            font-size: 16px;
+            font-weight: 500;
+        }
+        .tabbar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 50px;
+            background-color: white;
+            display: flex;
+            border-top: 1px solid #f0f0f0;
+            max-width: 390px;
+            margin: 0 auto;
+        }
+        .tab-item {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            color: #999;
+        }
+        .tab-item.active {
+            color: #1677FF;
+        }
+        .screen {
+            display: none;
+            height: calc(100% - 94px);
+            overflow-y: auto;
+        }
+        .screen.active {
+            display: block;
+        }
+        .section-title {
+            margin: 10px 0;
+            padding: 0 15px;
+            font-weight: bold;
+            color: #333;
+        }
+        .prototype-section {
+            margin-bottom: 40px;
+            border-top: 10px solid #f0f0f0;
+            padding-top: 20px;
+        }
+        .prototype-title {
+            background-color: #1677FF;
+            color: white;
+            padding: 10px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto py-8 px-4">
+        <h1 class="text-2xl font-bold text-center mb-8">租赁车辆支付宝小程序原型图</h1>
+
+        <!-- 首页/主界面原型 -->
+        <div class="prototype-section">
+            <div class="prototype-title">首页/主界面</div>
+            <div class="alipay-container">
+                <div class="status-bar">
+                    <div class="flex justify-between w-full items-center">
+                        <span>车辆租赁</span>
+                        <div class="flex space-x-2">
+                            <i class="ri-search-line"></i>
+                            <i class="ri-message-3-line"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="p-4">
+                    <!-- 轮播图 -->
+                    <div class="bg-gray-200 rounded-lg h-40 flex items-center justify-center mb-4">
+                        <span class="text-gray-500">轮播广告图</span>
+                    </div>
+                    
+                    <!-- 功能入口 -->
+                    <div class="grid grid-cols-4 gap-4 mb-6">
+                        <div class="flex flex-col items-center">
+                            <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mb-1">
+                                <i class="ri-qr-code-line text-blue-500 text-xl"></i>
+                            </div>
+                            <span class="text-xs">扫码租车</span>
+                        </div>
+                        <div class="flex flex-col items-center">
+                            <div class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center mb-1">
+                                <i class="ri-map-pin-line text-green-500 text-xl"></i>
+                            </div>
+                            <span class="text-xs">附近网点</span>
+                        </div>
+                        <div class="flex flex-col items-center">
+                            <div class="w-12 h-12 rounded-full bg-yellow-100 flex items-center justify-center mb-1">
+                                <i class="ri-file-list-3-line text-yellow-500 text-xl"></i>
+                            </div>
+                            <span class="text-xs">我的订单</span>
+                        </div>
+                        <div class="flex flex-col items-center">
+                            <div class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center mb-1">
+                                <i class="ri-customer-service-2-line text-purple-500 text-xl"></i>
+                            </div>
+                            <span class="text-xs">客服中心</span>
+                        </div>
+                    </div>
+                    
+                    <!-- 优惠活动 -->
+                    <div class="bg-gradient-to-r from-blue-500 to-blue-600 rounded-lg p-3 text-white mb-6 flex justify-between items-center">
+                        <div>
+                            <div class="text-lg font-bold">新用户专享</div>
+                            <div class="text-sm">首单立减50元</div>
+                        </div>
+                        <button class="bg-white text-blue-500 px-3 py-1 rounded-full text-sm">立即领取</button>
+                    </div>
+                    
+                    <!-- 热门车型 -->
+                    <div class="mb-4">
+                        <div class="flex justify-between items-center mb-3">
+                            <span class="font-bold">热门车型</span>
+                            <span class="text-sm text-gray-500">查看全部 ></span>
+                        </div>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div class="bg-white rounded-lg p-3 shadow-sm">
+                                <div class="bg-gray-100 h-24 rounded-lg mb-2 flex items-center justify-center">
+                                    <span class="text-gray-400">车辆图片</span>
+                                </div>
+                                <div class="font-medium">经济型轿车</div>
+                                <div class="text-sm text-gray-500">¥99/天起</div>
+                            </div>
+                            <div class="bg-white rounded-lg p-3 shadow-sm">
+                                <div class="bg-gray-100 h-24 rounded-lg mb-2 flex items-center justify-center">
+                                    <span class="text-gray-400">车辆图片</span>
+                                </div>
+                                <div class="font-medium">舒适型SUV</div>
+                                <div class="text-sm text-gray-500">¥199/天起</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 租车攻略 -->
+                    <div>
+                        <div class="font-bold mb-3">租车攻略</div>
+                        <div class="bg-white rounded-lg p-3 shadow-sm mb-3">
+                            <div class="flex items-center">
+                                <i class="ri-file-list-line text-blue-500 mr-2"></i>
+                                <span>租车流程及注意事项</span>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-lg p-3 shadow-sm">
+                            <div class="flex items-center">
+                                <i class="ri-question-line text-blue-500 mr-2"></i>
+                                <span>常见问题解答</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 底部导航栏 -->
+                <div class="tabbar">
+                    <div class="tab-item active">
+                        <i class="ri-home-5-fill text-lg"></i>
+                        <span>首页</span>
+                    </div>
+                    <div class="tab-item">
+                        <i class="ri-map-pin-line text-lg"></i>
+                        <span>网点</span>
+                    </div>
+                    <div class="tab-item">
+                        <i class="ri-qr-scan-line text-lg"></i>
+                        <span>扫码</span>
+                    </div>
+                    <div class="tab-item">
+                        <i class="ri-file-list-3-line text-lg"></i>
+                        <span>订单</span>
+                    </div>
+                    <div class="tab-item">
+                        <i class="ri-user-line text-lg"></i>
+                        <span>我的</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 扫码租赁原型 -->
+        <div class="prototype-section">
+            <div class="prototype-title">扫码租赁功能</div>
+            
+            <!-- 扫码页面 -->
+            <div class="alipay-container">
+                <div class="status-bar">
+                    <div class="flex items-center">
+                        <i class="ri-arrow-left-line mr-2"></i>
+                        <span>扫码租车</span>
+                    </div>
+                </div>
+                
+                <div class="h-full flex flex-col">
+                    <!-- 扫码区域 -->
+                    <div class="flex-1 bg-black relative">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="w-64 h-64 border-2 border-blue-500 rounded-lg relative">
+                                <div class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-blue-500"></div>
+                                <div class="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-blue-500"></div>
+                                <div class="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-blue-500"></div>
+                                <div class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-blue-500"></div>
+                                <div class="absolute inset-0 flex items-center justify-center">
+                                    <span class="text-white text-sm">将二维码放入框内，即可自动扫描</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="absolute bottom-10 left-0 right-0 flex justify-center">
+                            <div class="bg-white bg-opacity-10 text-white py-1 px-3 rounded-full text-sm">
+                                <i class="ri-flashlight-line mr-1"></i>
+                                <span>轻触照亮</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 底部提示 -->
+                    <div class="p-4 bg-white">
+                        <div class="text-center text-gray-600 mb-2">扫描车辆上的二维码，开始租车</div>
+                        <div class="flex justify-center">
+                            <button class="bg-blue-500 text-white py-2 px-6 rounded-full text-sm mr-4">
+                                <i class="ri-gallery-line mr-1"></i>
+                                从相册选择
+                            </button>
+                            <button class="bg-gray-100 text-gray-600 py-2 px-6 rounded-full text-sm">
+                                <i class="ri-input-method-line mr-1"></i>
+                                手动输入
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 车辆信息页面 -->
+            <div class="alipay-container mt-8">
+                <div class="status-bar">
+                    <div class="flex items-center">
+                        <i class="ri-arrow-left-line mr-2"></i>
+                        <span>车辆详情</span>
+                    </div>
+                </div>
+                
+                <div class="p-4">
+                    <!-- 车辆基本信息 -->
+                    <div class="bg-white rounded-lg shadow-sm p-4 mb-4">
+                        <div class="bg-gray-100 h-40 rounded-lg mb-3 flex items-center justify-center">
+                            <span class="text-gray-400">车辆图片</span>
+                        </div>
+                        <div class="font-bold text-lg mb-1">大众朗逸 2023款</div>
+                        <div class="text-sm text-gray-500 mb-3">车牌号：沪A12345</div>
+                        <div class="grid grid-cols-3 gap-2 text-center">
+                            <div class="bg-blue-50 p-2 rounded-lg">
+                                <div class="text-xs text-gray-500">排量</div>
+                                <div class="font-medium">1.5L</div>
+                            </div>
+                            <div class="bg-blue-50 p-2 rounded-lg">
+                                <div class="text-xs text-gray-500">座位</div>
+                                <div class="font-medium">5座</div>
+                            </div>
+                            <div class="bg-blue-50 p-2 rounded-lg">
+                                <div class="text-xs text-gray-500">变速箱</div>
+                                <div class="font-medium">自动</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 租赁周期选择 -->
+                    <div class="bg-white rounded-lg shadow-sm p-4 mb-4">
+                        <div class="font-bold mb-3">租赁周期</div>
+                        <div class="flex mb-4">
+                            <div class="flex-1 bg-blue-500 text-white text-center py-2 rounded-l-lg">按天</div>
+                            <div class="flex-1 bg-gray-100 text-center py-2">按周</div>
+                            <div class="flex-1 bg-gray-100 text-center py-2 rounded-r-lg">按月</div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <div class="text-sm text-gray-500 mb-1">开始时间</div>
+                                <div class="border rounded-lg p-2 flex justify-between items-center">
+                                    <span>2023-11-01 14:00</span>
+                                    <i class="ri-calendar-line text-gray-400"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="text-sm text-gray-500 mb-1">结束时间</div>
+                                <div class="border rounded-lg p-2 flex justify-between items-center">
+                                    <span>2023-11-03 14:00</span>
+                                    <i class="ri-calendar-line text-gray-400"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-sm text-gray-500">租赁时长：2天</div>
+                    </div>
+                    
+                    <!-- 价格计算 -->
+                    <div class="bg-white rounded-lg shadow-sm p-4 mb-4">
+                        <div class="font-bold mb-3">费用明细</div>
+                        <div class="flex justify-between mb-2">
+                            <span class="text-gray-500">基础租金</span>
+                            <span>¥99 × 2天 = ¥198</span>
+                        </div>
+                        <div class="flex justify-between mb-2">
+                            <span class="text-gray-500">车辆保险</span>
+                            <span>¥30 × 2天 = ¥60</span>
+                        </div>
+                        <div class="flex justify-between mb-2">
+                            <span class="text-gray-500">手续费</span>
+                            <span>¥10</span>
+                        </div>
+                        <div class="flex justify-between mb-2">
+                            <span class="text-gray-500">优惠</span>
+                            <span class="text-red-500">- ¥50</span>
+                        </div>
+                        <div class="border-t mt-3 pt-2 flex justify-between font-bold">
+                            <span>总计</span>
+                            <span class="text-red-500">¥218</span>
+                        </div>
+                    </div>
+                    
+                    <!-- 用户押金信息 -->
+                    <div class="bg-white rounded-lg shadow-sm p-4 mb-6">
+                        <div class="flex items-center justify-between mb-3">
+                            <div class="font-bold">押金信息</div>
+                            <div class="text-sm text-blue-500">芝麻信用 > </div>
+                        </div>
+                        <div class="flex justify-between items-center mb-3">
+                            <div class="flex items-center">
+                                <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-3">
+                                    <i class="ri-award-line text-blue-500"></i>
+                                </div>
+                                <div>
+                                    <div class="font-medium">芝麻分：760</div>
+                                    <div class="text-sm text-green-500">信用良好，可享免押金</div>
+                                </div>
+                            </div>
+                            <i class="ri-checkbox-circle-fill text-green-500 text-xl"></i>
+                        </div>
+                    </div>
+                    
+                    <!-- 底部确认按钮 -->
+                    <button class="w-full bg-blue-500 text-white py-3 rounded-lg font-medium">
+                        确认租赁
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 合同签署原型 -->
+        <div class="prototype-section">
+            <div class="prototype-title">合同签署功能</div>
+            
+            <!-- 合同预览页面 -->
+            <div class="alipay-container">
+                <div class="status-bar">
+                    <div class="flex items-center">
+                        <i class="ri-arrow-left-line mr-2"></i>
+                        <span>租赁合同</span>
+                    </div>
+                </div>
+                
+                <div class="p-4">
+                    <div class="bg-white rounded-lg shadow-sm p-4 mb-4">
+                        <div class="font-bold text-center mb-4">车辆租赁合同</div>
+                        <div class="bg-gray-100 rounded-lg h-80 flex flex-col items-center justify-center mb-4">
+                            <i class="ri-file-text-line text-gray-400 text-4xl mb-2"></i>
+                            <div class="text-gray-500 text-center">
+                                <p>合同文档预览</p>
+                                <p class="text-xs mt-1">合同内容根据您的租赁信息自动生成</p>
+                            </div>
+                        </div>
+                        <div class="flex justify-between mb-1">
+                            <span class="text-sm">车牌号：沪A12345</span>
+                            <span class="text-sm">车型：大众朗逸</span>
+                        </div>
+                        <div class="flex justify-between mb-1">
+                            <span class="text-sm">开始时间：2023-11-01 14:00</span>
+                        </div>
+                        <div class="flex justify-between mb-3">
+                            <span class="text-sm">结束时间：2023-11-03 14:00</span>
+                        </div>
+                        <div class="flex justify-between mb-3">
+                            <span class="text-sm">总费用：¥218</span>
+                        </div>
+                        <button class="w-full bg-blue-500 text-white py-2 rounded-lg mb-3">
+                            查看完整合同内容
+                        </button>
+                        <div class="flex items-center mb-4">
+                            <div class="w-5 h-5 bg-blue-500 rounded-sm mr-2 flex items-center justify-center text-white">
+                                <i class="ri-check-line"></i>
+                            </div>
+                            <span class="text-sm">我已阅读并同意《车辆租赁服务协议》</span>
+                        </div>
+                        <button class="w-full bg-blue-500 text-white py-2 rounded-lg">
+                            进入签署页面
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 签署页面 -->
+            <div class="alipay-container mt-8">
+                <div class="status-bar">
+                    <div class="flex items-center">
+                        <i class="ri-arrow-left-line mr-2"></i>
+                        <span>电子签名</span>
+                    </div>
+                </div>
+                
+                <div class="p-4">
+                    <div class="bg-white rounded-lg shadow-sm p-4 mb-4">
+                        <div class="font-bold mb-2">请在下方区域签署您的姓名</div>
+                        <div class="text-sm text-gray-500 mb-4">签名将用于租赁合同确认，请保持与证件上签名一致</div>
+                        
+                        <!-- 签名区域 -->
+                        <div class="bg-gray-50 border border-dashed border-gray-300 rounded-lg h-40 mb-4 flex items-center justify-center">
+                            <div class="text-gray-400 text-center">
+                                <i class="ri-edit-line text-2xl mb-2"></i>
+                                <div>请在此处手写签名</div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex mb-4">
+                            <button class="flex-1 py-2 bg-gray-100 rounded-lg mr-2 text-gray-600 text-sm">
+                                重新签名
+                            </button>
+                            <button class="flex-1 py-2 bg-blue-500 rounded-lg text-white text-sm">
+                                确认签名
+                            </button>
+                        </div>
+                        
+                        <div class="text-xs text-gray-500">
+                            温馨提示：签名一旦提交，将具有法律效力，请认真对待。
+                        </div>
+                    </div>
+                    
+                    <!-- 签署状态 -->
+                    <div class="bg-white rounded-lg shadow-sm p-4">
+                        <div class="font-bold mb-3">签署状态</div>
+                        <div class="flex items-center mb-4">
+                            <div class="w-6 h-6 rounded-full bg-blue-500 flex items-center justify-center text-white mr-3">
+                                1
+                            </div>
+                            <div class="flex-1">
+                                <div class="font-medium">合同生成</div>
+                                <div class="text-xs text-gray-500">2023-11-01 13:45:30</div>
+                            </div>
+                            <div class="text-green-500">
+                                <i class="ri-check-line"></i>
+                            </div>
+                        </div>
+                        <div class="border-l-2 border-blue-500 pl-7 ml-3 h-5"></div>
+                        <div class="flex items-center mb-4">
+                            <div class="w-6 h-6 rounded-full bg-blue-500 flex items-center justify-center text-white mr-3">
+                                2
+                            </div>
+                            <div class="flex-1">
+                                <div class="font-medium">用户签署</div>
+                                <div class="text-xs text-gray-500">进行中...</div>
+                            </div>
+                            <div class="text-blue-500">
+                                <i class="ri-time-line"></i>
+                            </div>
+                        </div>
+                        <div class="border-l-2 border-gray-300 pl-7 ml-3 h-5"></div>
+                        <div class="flex items-center mb-4">
+                            <div class="w-6 h-6 rounded-full bg-gray-300 flex items-center justify-center text-white mr-3">
+                                3
+                            </div>
+                            <div class="flex-1">
+                                <div class="font-medium">平台确认</div>
+                                <div class="text-xs text-gray-500">等待中</div>
+                            </div>
+                            <div class="text-gray-400">
+                                <i class="ri-time-line"></i>
+                            </div>
+                        </div>
+                        <div class="border-l-2 border-gray-300 pl-7 ml-3 h-5"></div>
+                        <div class="flex items-center">
+                            <div class="w-6 h-6 rounded-full bg-gray-300 flex items-center justify-center text-white mr-3">
+                                4
+                            </div>
+                            <div class="flex-1">
+                                <div class="font-medium">合同生效</div>
+                                <div class="text-xs text-gray-500">等待中</div>
+                            </div>
+                            <div class="text-gray-400">
+                                <i class="ri-time-line"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 身份认证原型 -->
+        <div class="prototype-section">
+            <div class="prototype-title">身份认证功能</div>
+            
+            <!-- 身份认证入口页面 -->
+            <div class="alipay-container">
+                <div class="status-bar">
+                    <div class="flex items-center">
+                        <i class="ri-arrow-left-line mr-2"></i>
+                        <span>身份认证</span>
+                    </div>
+                </div>
+                
+                <div class="p-4">
+                    <div class="bg-white rounded-lg shadow-sm p-4 mb-4">
+                        <div class="flex items-center justify-center mb-6">
+                            <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center">
+                                <i class="ri-shield-check-line text-blue-500 text-3xl"></i>
+                            </div>
+                        </div>
+                        <div class="text-center mb-6">
+                            <div class="font-bold mb-1">租车需进行身份认证</div>
+                            <div class="text-sm text-gray-500">为确保车辆租赁安全，需要您进行实名认证</div>
+                        </div>
+                        
+                        <div class="bg-gray-50 p-3 rounded-lg mb-4">
+                            <div class="flex items-center mb-2">
+                                <i class="ri-information-line text-blue-500 mr-2"></i>
+                                <div class="font-medium">认证说明</div>
+                            </div>
+                            <ul class="text-xs text-gray-500 pl-5 list-disc">
+                                <li>需上传您的身份证正反面</li>
+                                <li>所有数据采用国密算法加密存储</li>
+                                <li>认证成功后方可租车</li>
+                            </ul>
+                        </div>
+                        
+                        <button class="w-full bg-blue-500 text-white py-3 rounded-lg">
+                            开始认证
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 身份证上传页面 -->
+            <div class="alipay-container mt-8">
+                <div class="status-bar">
+                    <div class="flex items-center">
+                        <i class="ri-arrow-left-line mr-2"></i>
+                        <span>身份证上传</span>
+                    </div>
+                </div>
+                
+                <div class="p-4">
+                    <div class="text-center mb-6">
+                        <div class="font-bold mb-1">请上传身份证照片</div>
+                        <div class="text-sm text-gray-500">请确保身份证边缘完整，信息清晰可见</div>
+                    </div>
+                    
+                    <!-- 身份证正面上传 -->
+                    <div class="bg-white rounded-lg shadow-sm p-4 mb-4">
+                        <div class="font-medium mb-3">身份证正面（人像面）</div>
+                        <div class="bg-gray-50 border border-dashed border-gray-300 rounded-lg h-48 mb-3 flex items-center justify-center">
+                            <div class="text-center">
+                                <i class="ri-camera-line text-gray-400 text-3xl mb-2"></i>
+                                <div class="text-sm text-gray-400">点击上传或拍摄</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 身份证反面上传 -->
+                    <div class="bg-white rounded-lg shadow-sm p-4 mb-6">
+                        <div class="font-medium mb-3">身份证反面（国徽面）</div>
+                        <div class="bg-gray-50 border border-dashed border-gray-300 rounded-lg h-48 mb-3 flex items-center justify-center">
+                            <div class="text-center">
+                                <i class="ri-camera-line text-gray-400 text-3xl mb-2"></i>
+                                <div class="text-sm text-gray-400">点击上传或拍摄</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button class="w-full bg-gray-300 text-white py-3 rounded-lg">
+                        下一步
+                    </button>
+                </div>
+            </div>
+            
+           
+            
+            <!-- 芝麻信用授权页面 -->
+            <div class="alipay-container mt-8">
+                <div class="status-bar">
+                    <div class="flex items-center">
+                        <i class="ri-arrow-left-line mr-2"></i>
+                        <span>芝麻信用授权</span>
+                    </div>
+                </div>
+                
+                <div class="p-4">
+                    <div class="bg-white rounded-lg shadow-sm p-4 mb-4">
+                        <div class="flex items-center justify-center mb-6">
+                            <img src="https://gw.alipayobjects.com/zos/rmsportal/EOQTYGGPIEMXaZHIYqOI.png" alt="芝麻信用" class="h-12">
+                        </div>
+                        
+                        <div class="text-center mb-6">
+                            <div class="font-bold mb-1">芝麻信用评估</div>
+                            <div class="text-sm text-gray-500">授权芝麻信用，信用良好可享受免押金服务</div>
+                        </div>
+                        
+                        <div class="bg-blue-50 p-4 rounded-lg mb-4">
+                            <div class="flex justify-between items-center">
+                                <div>
+                                    <div class="font-medium">信用免押金</div>
+                                    <div class="text-xs text-gray-500 mt-1">芝麻分≥700可享</div>
+                                </div>
+                                <div class="text-blue-500 font-bold text-lg">¥1000</div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-50 p-3 rounded-lg mb-6">
+                            <div class="mb-2 font-medium">授权说明</div>
+                            <div class="text-xs text-gray-500">
+                                <p>授权后，我们将获取您的芝麻信用分及相关信用记录用于评估是否可以免押金。您的信用信息将被安全加密存储。</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex">
+                            <button class="flex-1 py-2 bg-gray-100 rounded-lg mr-2 text-gray-600">取消</button>
+                            <button class="flex-1 py-2 bg-blue-500 rounded-lg text-white">同意授权</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 认证完成页面 -->
+            <div class="alipay-container mt-8">
+                <div class="status-bar">
+                    <div class="flex items-center">
+                        <i class="ri-arrow-left-line mr-2"></i>
+                        <span>认证结果</span>
+                    </div>
+                </div>
+                
+                <div class="p-4 h-full flex flex-col items-center justify-center">
+                    <div class="bg-white rounded-lg shadow-sm p-6 w-full">
+                        <div class="flex items-center justify-center mb-6">
+                            <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center">
+                                <i class="ri-check-line text-green-500 text-4xl"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="text-center mb-6">
+                            <div class="font-bold text-xl mb-2">认证成功</div>
+                            <div class="text-gray-500">您的身份信息已通过验证</div>
+                        </div>
+                        
+                        <div class="bg-gray-50 rounded-lg p-4 mb-6">
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="text-gray-500">姓名</span>
+                                <span>张**</span>
+                            </div>
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="text-gray-500">身份证号</span>
+                                <span>310******1234</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-gray-500">芝麻信用分</span>
+                                <span class="text-blue-500 font-bold">760</span>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-green-50 p-3 rounded-lg mb-6 flex items-center">
+                            <i class="ri-shield-check-line text-green-500 mr-2"></i>
+                            <div class="text-sm text-green-600">您的芝麻信用良好，可享受免押金服务</div>
+                        </div>
+                        
+                        <button class="w-full bg-blue-500 text-white py-3 rounded-lg">
+                            继续租车流程
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 订单管理原型 -->
+        <div class="prototype-section">
+            <div class="prototype-title">订单管理功能</div>
+            
+            <!-- 订单列表页面 -->
+            <div class="alipay-container">
+                <div class="status-bar">
+                    <div class="flex justify-between w-full items-center">
+                        <span>我的订单</span>
+                        <i class="ri-search-line"></i>
+                    </div>
+                </div>
+                
+                <div class="p-4">
+                    <!-- 订单分类标签 -->
+                    <div class="flex mb-4 border-b">
+                        <div class="flex-1 text-center py-3 border-b-2 border-blue-500 text-blue-500 font-medium">全部</div>
+                        <div class="flex-1 text-center py-3 text-gray-500">使用中</div>
+                        <div class="flex-1 text-center py-3 text-gray-500">已完成</div>
+                        <div class="flex-1 text-center py-3 text-gray-500">已取消</div>
+                    </div>
+                    
+                    <!-- 筛选和排序 -->
+                    <div class="flex justify-between mb-4">
+                        <div class="flex items-center text-sm text-gray-500">
+                            <span>筛选：</span>
+                            <div class="flex items-center ml-2 border rounded px-2 py-1">
+                                <span>最近30天</span>
+                                <i class="ri-arrow-down-s-line ml-1"></i>
+                            </div>
+                        </div>
+                        <div class="flex items-center text-sm text-gray-500">
+                            <span>排序：</span>
+                            <div class="flex items-center ml-2 border rounded px-2 py-1">
+                                <span>时间</span>
+                                <i class="ri-arrow-down-s-line ml-1"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 订单列表 - 使用中 -->
+                    <div class="bg-white rounded-lg shadow-sm p-4 mb-4">
+                        <div class="flex justify-between mb-3">
+                            <div class="font-medium">订单号：23110101</div>
+                            <div class="text-blue-500">使用中</div>
+                        </div>
+                        <div class="flex mb-4">
+                            <div class="w-20 h-20 bg-gray-100 rounded-lg mr-3 flex items-center justify-center">
+                                <span class="text-gray-400 text-xs">车辆图片</span>
+                            </div>
+                            <div class="flex-1">
+                                <div class="font-medium mb-1">大众朗逸 2023款</div>
+                                <div class="text-sm text-gray-500 mb-1">车牌号：沪A12345</div>
+                                <div class="text-sm text-gray-500">2023-11-01 14:00 至 2023-11-03 14:00</div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between border-t pt-3">
+                            <div class="text-sm text-gray-500">
+                                总费用：<span class="text-red-500 font-medium">¥218</span>
+                            </div>
+                            <div>
+                                <button class="bg-white border border-blue-500 text-blue-500 px-3 py-1 rounded-lg text-sm">
+                                    查看详情
+                                </button>
+                                <button class="bg-blue-500 text-white px-3 py-1 rounded-lg text-sm ml-2">
+                                    续租
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 订单列表 - 已完成 -->
+                    <div class="bg-white rounded-lg shadow-sm p-4 mb-4">
+                        <div class="flex justify-between mb-3">
+                            <div class="font-medium">订单号：23102501</div>
+                            <div class="text-green-500">已完成</div>
+                        </div>
+                        <div class="flex mb-4">
+                            <div class="w-20 h-20 bg-gray-100 rounded-lg mr-3 flex items-center justify-center">
+                                <span class="text-gray-400 text-xs">车辆图片</span>
+                            </div>
+                            <div class="flex-1">
+                                <div class="font-medium mb-1">丰田卡罗拉 2022款</div>
+                                <div class="text-sm text-gray-500 mb-1">车牌号：沪B54321</div>
+                                <div class="text-sm text-gray-500">2023-10-25 10:00 至 2023-10-28 10:00</div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between border-t pt-3">
+                            <div class="text-sm text-gray-500">
+                                总费用：<span class="text-red-500 font-medium">¥297</span>
+                            </div>
+                            <div>
+                                <button class="bg-white border border-blue-500 text-blue-500 px-3 py-1 rounded-lg text-sm">
+                                    查看详情
+                                </button>
+                                <button class="bg-gray-100 text-gray-500 px-3 py-1 rounded-lg text-sm ml-2">
+                                    评价
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 订单列表 - 已取消 -->
+                    <div class="bg-white rounded-lg shadow-sm p-4 mb-4">
+                        <div class="flex justify-between mb-3">
+                            <div class="font-medium">订单号：23101501</div>
+                            <div class="text-gray-500">已取消</div>
+                        </div>
+                        <div class="flex mb-4">
+                            <div class="w-20 h-20 bg-gray-100 rounded-lg mr-3 flex items-center justify-center">
+                                <span class="text-gray-400 text-xs">车辆图片</span>
+                            </div>
+                            <div class="flex-1">
+                                <div class="font-medium mb-1">本田思域 2022款</div>
+                                <div class="text-sm text-gray-500 mb-1">车牌号：沪C98765</div>
+                                <div class="text-sm text-gray-500">订单已于2023-10-15 08:30取消</div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between border-t pt-3">
+                            <div class="text-sm text-gray-500">
+                                取消原因：临时有变
+                            </div>
+                            <div>
+                                <button class="bg-white border border-blue-500 text-blue-500 px-3 py-1 rounded-lg text-sm">
+                                    查看详情
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 底部导航栏 -->
+                <div class="tabbar">
+                    <div class="tab-item">
+                        <i class="ri-home-5-line text-lg"></i>
+                        <span>首页</span>
+                    </div>
+                    <div class="tab-item">
+                        <i class="ri-map-pin-line text-lg"></i>
+                        <span>网点</span>
+                    </div>
+                    <div class="tab-item">
+                        <i class="ri-qr-scan-line text-lg"></i>
+                        <span>扫码</span>
+                    </div>
+                    <div class="tab-item active">
+                        <i class="ri-file-list-3-fill text-lg"></i>
+                        <span>订单</span>
+                    </div>
+                    <div class="tab-item">
+                        <i class="ri-user-line text-lg"></i>
+                        <span>我的</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 订单详情页面 -->
+            <div class="alipay-container mt-8">
+                <div class="status-bar">
+                    <div class="flex items-center">
+                        <i class="ri-arrow-left-line mr-2"></i>
+                        <span>订单详情</span>
+                    </div>
+                </div>
+                
+                <div class="p-4">
+                    <!-- 订单状态 -->
+                    <div class="bg-gradient-to-r from-blue-500 to-blue-600 rounded-lg p-4 text-white mb-4">
+                        <div class="flex items-center mb-2">
+                            <i class="ri-car-line text-2xl mr-3"></i>
+                            <div class="text-lg font-medium">使用中</div>
+                        </div>
+                        <div class="text-sm opacity-80">
+                            您的租期还剩 1天2小时30分钟
+                        </div>
+                    </div>
+                    
+                    <!-- 车辆信息 -->
+                    <div class="bg-white rounded-lg shadow-sm p-4 mb-4">
+                        <div class="font-medium mb-3">车辆信息</div>
+                        <div class="flex mb-3">
+                            <div class="w-20 h-20 bg-gray-100 rounded-lg mr-3 flex items-center justify-center">
+                                <span class="text-gray-400 text-xs">车辆图片</span>
+                            </div>
+                            <div class="flex-1">
+                                <div class="font-medium mb-1">大众朗逸 2023款</div>
+                                <div class="text-sm text-gray-500 mb-1">车牌号：沪A12345</div>
+                                <div class="text-sm text-gray-500">自动挡 / 1.5L / 5座</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 租赁信息 -->
+                    <div class="bg-white rounded-lg shadow-sm p-4 mb-4">
+                        <div class="font-medium mb-3">租赁信息</div>
+                        <div class="flex justify-between text-sm mb-2">
+                            <span class="text-gray-500">订单号</span>
+                            <span>23110101</span>
+                        </div>
+                        <div class="flex justify-between text-sm mb-2">
+                            <span class="text-gray-500">下单时间</span>
+                            <span>2023-11-01 13:45:30</span>
+                        </div>
+                        <div class="flex justify-between text-sm mb-2">
+                            <span class="text-gray-500">租赁开始</span>
+                            <span>2023-11-01 14:00</span>
+                        </div>
+                        <div class="flex justify-between text-sm mb-2">
+                            <span class="text-gray-500">租赁结束</span>
+                            <span>2023-11-03 14:00</span>
+                        </div>
+                        <div class="flex justify-between text-sm mb-2">
+                            <span class="text-gray-500">租赁时长</span>
+                            <span>2天</span>
+                        </div>
+                        <div class="flex justify-between text-sm mb-2">
+                            <span class="text-gray-500">取车地点</span>
+                            <span>上海市徐汇区XX路28号</span>
+                        </div>
+                        <div class="flex justify-between text-sm">
+                            <span class="text-gray-500">还车地点</span>
+                            <span>同取车地点</span>
+                        </div>
+                    </div>
+                    
+                    <!-- 费用信息 -->
+                    <div class="bg-white rounded-lg shadow-sm p-4 mb-4">
+                        <div class="font-medium mb-3">费用信息</div>
+                        <div class="flex justify-between text-sm mb-2">
+                            <span class="text-gray-500">基础租金</span>
+                            <span>¥99 × 2天 = ¥198</span>
+                        </div>
+                        <div class="flex justify-between text-sm mb-2">
+                            <span class="text-gray-500">车辆保险</span>
+                            <span>¥30 × 2天 = ¥60</span>
+                        </div>
+                        <div class="flex justify-between text-sm mb-2">
+                            <span class="text-gray-500">手续费</span>
+                            <span>¥10</span>
+                        </div>
+                        <div class="flex justify-between text-sm mb-2">
+                            <span class="text-gray-500">优惠</span>
+                            <span class="text-red-500">- ¥50</span>
+                        </div>
+                        <div class="border-t mt-2 pt-2 flex justify-between font-medium">
+                            <span>总计</span>
+                            <span class="text-red-500">¥218</span>
+                        </div>
+                    </div>
+                    
+                    <!-- 租赁时间轴 -->
+                    <div class="bg-white rounded-lg shadow-sm p-4 mb-6">
+                        <div class="font-medium mb-3">租赁进度</div>
+                        <div class="flex items-center mb-4">
+                            <div class="w-6 h-6 rounded-full bg-blue-500 flex items-center justify-center text-white mr-3">
+                                <i class="ri-check-line"></i>
+                            </div>
+                            <div class="flex-1">
+                                <div class="font-medium">订单创建</div>
+                                <div class="text-xs text-gray-500">2023-11-01 13:45:30</div>
+                            </div>
+                        </div>
+                        <div class="border-l-2 border-blue-500 pl-7 ml-3 h-5"></div>
+                        <div class="flex items-center mb-4">
+                            <div class="w-6 h-6 rounded-full bg-blue-500 flex items-center justify-center text-white mr-3">
+                                <i class="ri-check-line"></i>
+                            </div>
+                            <div class="flex-1">
+                                <div class="font-medium">签署合同</div>
+                                <div class="text-xs text-gray-500">2023-11-01 13:50:15</div>
+                            </div>
+                        </div>
+                        <div class="border-l-2 border-blue-500 pl-7 ml-3 h-5"></div>
+                        <div class="flex items-center mb-4">
+                            <div class="w-6 h-6 rounded-full bg-blue-500 flex items-center justify-center text-white mr-3">
+                                <i class="ri-check-line"></i>
+                            </div>
+                            <div class="flex-1">
+                                <div class="font-medium">取车</div>
+                                <div class="text-xs text-gray-500">2023-11-01 14:05:22</div>
+                            </div>
+                        </div>
+                        <div class="border-l-2 border-blue-500 pl-7 ml-3 h-5"></div>
+                        <div class="flex items-center">
+                            <div class="w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center text-blue-500 mr-3">
+                                <i class="ri-time-line"></i>
+                            </div>
+                            <div class="flex-1">
+                                <div class="font-medium">还车</div>
+                                <div class="text-xs text-gray-500">预计 2023-11-03 14:00</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 底部按钮 -->
+                    <div class="flex">
+                        <button class="flex-1 py-3 bg-white border border-blue-500 rounded-lg text-blue-500 mr-3">
+                            联系客服
+                        </button>
+                        <button class="flex-1 py-3 bg-blue-500 rounded-lg text-white">
+                            申请续租
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 续租页面 -->
+            <div class="alipay-container mt-8">
+                <div class="status-bar">
+                    <div class="flex items-center">
+                        <i class="ri-arrow-left-line mr-2"></i>
+                        <span>申请续租</span>
+                    </div>
+                </div>
+                
+                <div class="p-4">
+                    <!-- 原订单信息 -->
+                    <div class="bg-white rounded-lg shadow-sm p-4 mb-4">
+                        <div class="font-medium mb-3">原订单信息</div>
+                        <div class="flex mb-3">
+                            <div class="w-16 h-16 bg-gray-100 rounded-lg mr-3 flex items-center justify-center">
+                                <span class="text-gray-400 text-xs">车辆图片</span>
+                            </div>
+                            <div class="flex-1">
+                                <div class="font-medium mb-1">大众朗逸 2023款</div>
+                                <div class="text-sm text-gray-500">沪A12345</div>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-2 text-sm">
+                            <div class="flex flex-col">
+                                <span class="text-gray-500">租赁开始</span>
+                                <span>2023-11-01 14:00</span>
+                            </div>
+                            <div class="flex flex-col">
+                                <span class="text-gray-500">租赁结束</span>
+                                <span>2023-11-03 14:00</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 续租设置 -->
+                    <div class="bg-white rounded-lg shadow-sm p-4 mb-4">
+                        <div class="font-medium mb-3">续租设置</div>
+                        <div class="mb-4">
+                            <div class="text-sm text-gray-500 mb-2">续租天数</div>
+                            <div class="flex">
+                                <button class="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center">
+                                    <i class="ri-subtract-line"></i>
+                                </button>
+                                <div class="flex-1 mx-3 border rounded-lg flex items-center justify-center">
+                                    2
+                                </div>
+                                <button class="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center">
+                                    <i class="ri-add-line"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="text-sm text-gray-500 mb-2">新的结束时间</div>
+                            <div class="border rounded-lg p-2 flex justify-between items-center">
+                                <span>2023-11-05 14:00</span>
+                                <i class="ri-calendar-line text-gray-400"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 费用计算 -->
+                    <div class="bg-white rounded-lg shadow-sm p-4 mb-6">
+                        <div class="font-medium mb-3">费用明细</div>
+                        <div class="flex justify-between mb-2">
+                            <span class="text-gray-500">基础租金</span>
+                            <span>¥99 × 2天 = ¥198</span>
+                        </div>
+                        <div class="flex justify-between mb-2">
+                            <span class="text-gray-500">车辆保险</span>
+                            <span>¥30 × 2天 = ¥60</span>
+                        </div>
+                        <div class="flex justify-between mb-2">
+                            <span class="text-gray-500">手续费</span>
+                            <span>¥0</span>
+                        </div>
+                        <div class="border-t mt-3 pt-2 flex justify-between font-bold">
+                            <span>续租费用</span>
+                            <span class="text-red-500">¥258</span>
+                        </div>
+                    </div>
+                    
+                    <!-- 底部按钮 -->
+                    <button class="w-full bg-blue-500 text-white py-3 rounded-lg font-medium">
+                        确认续租
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
